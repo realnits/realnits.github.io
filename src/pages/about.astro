@@ -16,63 +16,68 @@ const certs = await getCollection("certifications", ({ data }) => !data.draft);
   <Breadcrumb />
   <main id="main-content" class="app-layout pb-12">
 
-    <!-- Intro -->
-    <section class="mb-10">
-      <h1 class="text-2xl font-bold tracking-wider sm:text-3xl">
-        Hey, I'm Nithissh <span class="inline-block animate-wave origin-[70%_70%]">👋</span>
+    <!-- Hero Intro -->
+    <section class="about-hero mb-12 rounded-2xl bg-[var(--color-fill-secondary,rgba(0,0,0,0.04))] px-6 py-8 sm:px-8 sm:py-10">
+      <h1 class="mb-1 text-2xl font-extrabold tracking-tight sm:text-3xl">
+        Nithissh <span class="inline-block animate-wave origin-[70%_70%]">👋</span>
       </h1>
-      <p class="mt-4 text-lg leading-relaxed opacity-90">
-        Security architect by day, bug bounty hunter by night. I break things so I can understand how to defend them better.
+      <p class="mb-4 text-sm font-medium uppercase tracking-widest opacity-50">
+        Security Architect &bull; Bug Bounty Hunter &bull; Builder
       </p>
-      <p class="mt-3 leading-relaxed opacity-80">
-        I work on platform &amp; AI security at one of the largest pharma companies. Outside of work, I hunt vulnerabilities across the web &amp; cloud, build security tooling, and write about everything I learn here.
+      <p class="max-w-xl leading-relaxed opacity-85">
+        I handle platform &amp; AI security at one of the largest pharma companies.
+        Outside work, I break things across the web &amp; cloud to understand how to defend them better —
+        then write about it here.
       </p>
-    </section>
 
-    <!-- Stats -->
-    <section class="mb-10 grid grid-cols-3 gap-4">
-      <a href="/cves" class="group rounded-lg border border-border p-4 text-center transition-colors hover:border-accent/60 no-underline">
-        <div class="text-3xl font-bold text-accent">{cves.length}</div>
-        <div class="mt-1 text-sm opacity-70 group-hover:opacity-100">CVEs Published</div>
-      </a>
-      <a href="/certifications" class="group rounded-lg border border-border p-4 text-center transition-colors hover:border-accent/60 no-underline">
-        <div class="text-3xl font-bold text-accent">{certs.length}</div>
-        <div class="mt-1 text-sm opacity-70 group-hover:opacity-100">Certifications</div>
-      </a>
-      <a href="/posts" class="group rounded-lg border border-border p-4 text-center transition-colors hover:border-accent/60 no-underline">
-        <div class="text-3xl font-bold text-accent">{posts.length}+</div>
-        <div class="mt-1 text-sm opacity-70 group-hover:opacity-100">Writeups</div>
-      </a>
+      <!-- Stats row -->
+      <div class="mt-6 flex flex-wrap gap-6">
+        <a href="/cves" class="about-stat group no-underline">
+          <span class="about-stat-num">{cves.length}</span>
+          <span class="about-stat-label">CVEs</span>
+        </a>
+        <a href="/certifications" class="about-stat group no-underline">
+          <span class="about-stat-num">{certs.length}</span>
+          <span class="about-stat-label">Certs</span>
+        </a>
+        <a href="/posts" class="about-stat group no-underline">
+          <span class="about-stat-num">{posts.length}+</span>
+          <span class="about-stat-label">Posts</span>
+        </a>
+      </div>
     </section>
 
     <!-- What I Do -->
-    <section class="mb-10">
-      <h2 class="mb-5 text-xl font-bold">What I Do</h2>
+    <section class="mb-12">
+      <h2 class="about-section-title">What I Do</h2>
       <div class="grid gap-4 sm:grid-cols-3">
-        <div class="rounded-lg border border-border p-5">
-          <div class="mb-2 text-sm font-bold uppercase tracking-wider text-red-500 dark:text-red-400">Offense</div>
-          <ul class="space-y-1 text-sm opacity-80">
+        <div class="about-card about-card--red">
+          <div class="about-card-icon">🗡️</div>
+          <h3 class="about-card-heading">Offense</h3>
+          <ul class="about-card-list">
             <li>Bug Bounty Hunting</li>
-            <li>Web & API Pentesting</li>
+            <li>Web &amp; API Pentesting</li>
             <li>Cloud Security (AWS, Azure, GCP)</li>
             <li>Vulnerability Research</li>
           </ul>
         </div>
-        <div class="rounded-lg border border-border p-5">
-          <div class="mb-2 text-sm font-bold uppercase tracking-wider text-blue-500 dark:text-blue-400">Defense</div>
-          <ul class="space-y-1 text-sm opacity-80">
-            <li>Platform & AI Security</li>
+        <div class="about-card about-card--blue">
+          <div class="about-card-icon">🛡️</div>
+          <h3 class="about-card-heading">Defense</h3>
+          <ul class="about-card-list">
+            <li>Platform &amp; AI Security</li>
             <li>SOC Operations</li>
-            <li>SIEM & EDR</li>
-            <li>DevSecOps & Incident Response</li>
+            <li>SIEM &amp; EDR</li>
+            <li>DevSecOps &amp; IR</li>
           </ul>
         </div>
-        <div class="rounded-lg border border-border p-5">
-          <div class="mb-2 text-sm font-bold uppercase tracking-wider text-green-500 dark:text-green-400">Build</div>
-          <ul class="space-y-1 text-sm opacity-80">
+        <div class="about-card about-card--green">
+          <div class="about-card-icon">🔧</div>
+          <h3 class="about-card-heading">Build</h3>
+          <ul class="about-card-list">
             <li>Security Tooling</li>
             <li>Automation</li>
-            <li>Open Source</li>
+            <li>Open Source Contributions</li>
             <li>This Blog</li>
           </ul>
         </div>
@@ -80,85 +85,73 @@ const certs = await getCollection("certifications", ({ data }) => !data.draft);
     </section>
 
     <!-- Certifications -->
-    <section class="mb-10">
-      <h2 class="mb-5 text-xl font-bold">Certifications</h2>
+    <section class="mb-12">
+      <h2 class="about-section-title">Certifications</h2>
       <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {certs.map(cert => (
           <a
             href={cert.data.credentialUrl || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center gap-3 rounded-lg border border-border px-4 py-3 transition-colors hover:border-accent/50 no-underline"
+            class="about-cert-card group no-underline"
           >
             {cert.data.badgeUrl ? (
               <img
                 src={cert.data.badgeUrl}
                 alt={cert.data.name}
-                class="h-10 w-10 shrink-0 object-contain"
+                class="h-12 w-12 shrink-0 rounded-lg object-contain bg-white p-1"
               />
             ) : (
-              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/15 text-sm font-bold text-accent">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-accent/20 text-base font-extrabold text-accent">
                 {cert.data.name.charAt(0)}
               </div>
             )}
             <div class="min-w-0">
-              <div class="truncate text-sm font-semibold group-hover:text-accent">
+              <div class="truncate text-sm font-bold group-hover:text-accent transition-colors">
                 {cert.data.name}
               </div>
-              <div class="truncate text-xs opacity-60">{cert.data.issuer}</div>
+              <div class="truncate text-xs opacity-50">{cert.data.issuer}</div>
             </div>
           </a>
         ))}
       </div>
-      <a href="/certifications" class="mt-4 inline-block text-sm text-accent underline underline-offset-4 hover:opacity-80">
-        View all with details →
+      <a href="/certifications" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline">
+        See all with badges <span aria-hidden="true">&rarr;</span>
       </a>
     </section>
 
     <!-- About the Blog -->
-    <section class="mb-10">
-      <h2 class="mb-3 text-xl font-bold">This Blog</h2>
+    <section class="mb-12 rounded-xl border-l-4 border-accent/60 bg-[var(--color-fill-secondary,rgba(0,0,0,0.04))] py-5 pr-6 pl-6">
+      <h2 class="mb-2 text-lg font-bold">This Blog</h2>
       <p class="leading-relaxed opacity-80">
-        I write to think clearly. Bug bounty writeups, cloud security research, CTF walkthroughs, 
-        SOC learnings — whatever I'm digging into that week shows up here. It's mostly for 
-        future-me so I don't relearn things twice. If it helps you too, that's a win.
+        I write to think. Bug bounty writeups, cloud security research, CTF solutions,
+        SOC learning notes — whatever I'm into that week ends up here.
+        Mostly for future-me, so I don't relearn things twice. If it helps you too, that's a bonus.
       </p>
     </section>
 
     <!-- Connect -->
-    <section>
-      <h2 class="mb-4 text-xl font-bold">Connect</h2>
+    <section class="mb-4">
+      <h2 class="about-section-title">Let's Connect</h2>
       <div class="flex flex-wrap gap-3">
-        <a
-          href="https://github.com/realnits"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium transition-colors hover:border-accent/50 hover:text-accent no-underline"
-        >
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        <a href="https://github.com/realnits" target="_blank" rel="noopener noreferrer"
+           class="about-connect-btn no-underline">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           GitHub
         </a>
-        <a
-          href="https://linkedin.com/in/nithisshs"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium transition-colors hover:border-accent/50 hover:text-accent no-underline"
-        >
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a href="https://linkedin.com/in/nithisshs" target="_blank" rel="noopener noreferrer"
+           class="about-connect-btn no-underline">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
-        <a
-          href="mailto:realnits@gmail.com"
-          class="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium transition-colors hover:border-accent/50 hover:text-accent no-underline"
-        >
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <a href="mailto:realnits@gmail.com"
+           class="about-connect-btn no-underline">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           Email
         </a>
-        <a
-          href="/rss.xml"
-          class="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-medium transition-colors hover:border-accent/50 hover:text-accent no-underline"
-        >
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+        <a href="/rss.xml"
+           class="about-connect-btn no-underline">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
           RSS
         </a>
       </div>
@@ -169,6 +162,7 @@ const certs = await getCollection("certifications", ({ data }) => !data.draft);
 </Layout>
 
 <style>
+  /* Wave animation */
   @keyframes wave {
     0%, 100% { transform: rotate(0deg); }
     25% { transform: rotate(20deg); }
@@ -177,5 +171,134 @@ const certs = await getCollection("certifications", ({ data }) => !data.draft);
   .animate-wave {
     animation: wave 1.8s ease-in-out infinite;
     display: inline-block;
+  }
+
+  /* Section titles */
+  .about-section-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  /* Stat pills */
+  .about-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    background: var(--color-accent);
+    color: var(--color-fill);
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .about-stat:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+  }
+  .about-stat-num {
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .about-stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.85;
+  }
+
+  /* What I Do cards */
+  .about-card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 2px solid transparent;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .about-card:hover {
+    transform: translateY(-2px);
+  }
+  .about-card--red {
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+  .about-card--red:hover { border-color: rgba(239, 68, 68, 0.5); }
+
+  .about-card--blue {
+    background: rgba(59, 130, 246, 0.08);
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+  .about-card--blue:hover { border-color: rgba(59, 130, 246, 0.5); }
+
+  .about-card--green {
+    background: rgba(34, 197, 94, 0.08);
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+  .about-card--green:hover { border-color: rgba(34, 197, 94, 0.5); }
+
+  .about-card-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .about-card-heading {
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+  .about-card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .about-card-list li {
+    font-size: 0.875rem;
+    padding: 0.2rem 0;
+    opacity: 0.75;
+  }
+  .about-card-list li::before {
+    content: "›";
+    margin-right: 0.5rem;
+    font-weight: 700;
+    opacity: 0.5;
+  }
+
+  /* Cert cards */
+  .about-cert-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background: var(--color-fill-secondary, rgba(0,0,0,0.03));
+    border: 1.5px solid transparent;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .about-cert-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-1px);
+  }
+
+  /* Connect buttons */
+  .about-connect-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: var(--color-fill-secondary, rgba(0,0,0,0.04));
+    border: 1.5px solid transparent;
+    transition: all 0.15s ease;
+  }
+  .about-connect-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-1px);
   }
 </style>
