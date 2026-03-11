@@ -3,35 +3,47 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-AstroPaper is a minimal, accessible and SEO-friendly blog theme built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+security architect by day, bug bounty hunter by night — i break things to understand how to defend them better.
 
-![Astro Paper](public/astropaper-og.jpg)
+i handle platform and AI security at one of the largest pharma companies. outside work, i spend my time hunting vulnerabilities, writing security tools, and documenting everything i learn on this blog.
 
-AstroPaper provides a solid foundation for blogs, or even portfolios\_ with full markdown support, built-in dark mode, and a clean layout that works out-of-the-box.
+the thing that keeps me going is curiosity — there's nothing quite like finding the flaw that nobody else noticed.
 
-The blog posts in this theme also serve as guides, docs or example articles\_ making AstroPaper a flexible starting point for your next content-driven site.
+---
 
-## Features
+## what i do
 
-AstroPaper comes with a set of useful features that make content publishing easy and effective:
+**offense** — bug bounty · web & api pentesting · cloud security (aws, azure, gcp) · vulnerability research
 
-- SEO-friendly
-- Fast performance
-- Light & dark mode
-- Highly customizable
-- Organizable blog posts
-- Responsive & accessible
-- Static search with [PageFind](https://pagefind.app/)
-- Automatic social image generation
+**defense** — platform & ai security · soc operations · siem & edr · devsecops · incident response
 
-and so much more.
+**build** — security tooling · automation · open source contributions · this blog
 
-## Show your support
+---
 
-If you like [AstroPaper](https://github.com/satnaing/astro-paper), consider giving it a star ⭐️.
+## certifications
 
-Found a bug 🐛 or have an improvement ✨ in mind? Feel free to open an [issue](https://github.com/satnaing/astro-paper/issues), submit a [pull request](https://github.com/satnaing/astro-paper/pulls) or start a [discussion](https://github.com/satnaing/astro-paper/discussions).
+| Cert | Full Name | Issuer |
+|------|-----------|--------|
+| **BCP** | Burp Certified Practitioner | PortSwigger |
+| **CDP** | Certified DevSecOps Professional | Practical DevSecOps |
+| **eWPTx** | Web App Pentester eXtreme | INE Security |
+| **eWPT** | Web App Penetration Tester | INE Security |
+| **eCPPTv2** | Certified Penetration Tester eXtreme | INE Security |
+| **CCSK** | Cloud Security Knowledge v4 | CSA |
 
-If you find this theme helpful, you can also [sponsor me on GitHub](https://github.com/sponsors/satnaing) or [buy me a coffee](https://buymeacoffee.com/satnaing) to show your support — every penny counts.
+[→ see all with badges](/certifications)
 
-Kyay zuu! 🙏🏼
+---
+
+## this blog
+
+i write to think. bug bounty writeups, cloud security research, CTF solutions, SOC learning notes — whatever i'm into that week ends up here.
+
+mostly for future-me, so i don't relearn things twice. if it helps you too, that's a bonus.
+
+---
+
+## connect
+
+[github](https://github.com/realnits) · [email](mailto:realnits@gmail.com) · [linkedin](https://linkedin.com/in/nithisshs) · [rss](/rss.xml)

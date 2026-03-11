@@ -1,0 +1,134 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Main from "@/layouts/Main.astro";
+import { SITE } from "@/config";
+
+const cves = await getCollection("cves", ({ data }) => !data.draft);
+
+const sortedCves = cves.sort(
+  (a, b) =>
+    b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime()
+);
+
+const severityColor: Record<string, string> = {
+  Critical: "bg-red-600 text-white",
+  High: "bg-orange-500 text-white",
+  Medium: "bg-yellow-500 text-black",
+  Low: "bg-blue-500 text-white",
+  Informational: "bg-gray-400 text-black",
+};
+
+const severityOrder: Record<string, number> = {
+  Critical: 0,
+  High: 1,
+  Medium: 2,
+  Low: 3,
+  Informational: 4,
+};
+
+// Group CVEs by year
+const cvesByYear = sortedCves.reduce(
+  (acc, cve) => {
+    const year = cve.data.pubDatetime.getFullYear().toString();
+    if (!acc[year]) acc[year] = [];
+    acc[year].push(cve);
+    return acc;
+  },
+  {} as Record<string, typeof sortedCves>
+);
+---
+
+<Layout title={`CVEs | ${SITE.title}`}>
+  <Header />
+  <Main pageTitle="CVEs" pageDesc="Security vulnerabilities I've discovered and responsibly disclosed.">
+    {
+      sortedCves.length === 0 ? (
+        <p class="italic opacity-70">No CVEs published yet.</p>
+      ) : (
+        <div class="space-y-10">
+          {/* Summary stats */}
+          <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+            <div class="rounded-lg border border-border p-4 text-center">
+              <div class="text-3xl font-bold text-accent">{sortedCves.length}</div>
+              <div class="text-sm opacity-70">Total CVEs</div>
+            </div>
+            <div class="rounded-lg border border-border p-4 text-center">
+              <div class="text-3xl font-bold text-red-500">
+                {sortedCves.filter(c => c.data.severity === "Critical").length}
+              </div>
+              <div class="text-sm opacity-70">Critical</div>
+            </div>
+            <div class="rounded-lg border border-border p-4 text-center">
+              <div class="text-3xl font-bold text-orange-500">
+                {sortedCves.filter(c => c.data.severity === "High").length}
+              </div>
+              <div class="text-sm opacity-70">High</div>
+            </div>
+            <div class="rounded-lg border border-border p-4 text-center">
+              <div class="text-3xl font-bold text-yellow-500">
+                {sortedCves.filter(c => c.data.severity === "Medium" || c.data.severity === "Low").length}
+              </div>
+              <div class="text-sm opacity-70">Medium / Low</div>
+            </div>
+          </div>
+
+          {/* CVE List grouped by year */}
+          {Object.entries(cvesByYear)
+            .sort(([a], [b]) => Number(b) - Number(a))
+            .map(([year, yearCves]) => (
+              <div>
+                <h2 class="mb-4 text-xl font-bold">
+                  {year}
+                  <sup class="ml-1 text-sm font-normal opacity-70">{yearCves.length}</sup>
+                </h2>
+                <div class="space-y-4">
+                  {yearCves
+                    .sort((a, b) => severityOrder[a.data.severity] - severityOrder[b.data.severity])
+                    .map(cve => (
+                      <a href={`/cves/${cve.id}`} class="group block rounded-lg border border-border p-4 transition-colors hover:bg-fill/50">
+                        <div class="flex flex-wrap items-start justify-between gap-2">
+                          <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-2">
+                              <code class="font-mono text-sm font-semibold text-accent">{cve.data.cveId}</code>
+                              <span class:list={[
+                                "inline-block rounded px-2 py-0.5 text-xs font-semibold",
+                                severityColor[cve.data.severity],
+                              ]}>
+                                {cve.data.severity}
+                                {cve.data.cvssScore !== undefined && ` (${cve.data.cvssScore})`}
+                              </span>
+                              <span class="rounded border border-border px-2 py-0.5 text-xs opacity-70">
+                                {cve.data.status}
+                              </span>
+                            </div>
+                            <h3 class="mt-1 text-lg font-medium group-hover:text-accent">
+                              {cve.data.title}
+                            </h3>
+                            <p class="mt-1 text-sm opacity-70">{cve.data.description}</p>
+                            <div class="mt-2 flex flex-wrap items-center gap-3 text-xs opacity-60">
+                              <span>Product: {cve.data.affectedProduct}</span>
+                              {cve.data.vendor && <span>Vendor: {cve.data.vendor}</span>}
+                              <span>
+                                {cve.data.pubDatetime.toLocaleDateString("en-US", {
+                                  year: "numeric",
+                                  month: "short",
+                                  day: "numeric",
+                                })}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    ))}
+                </div>
+              </div>
+            ))}
+        </div>
+      )
+    }
+  </Main>
+  <Footer />
+</Layout>

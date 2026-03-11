@@ -5,6 +5,8 @@ import IconSearch from "@/assets/icons/IconSearch.svg";
 import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
+import IconShieldLock from "@/assets/icons/IconShieldLock.svg";
+import IconCertificate from "@/assets/icons/IconCertificate.svg";
 import LinkButton from "./LinkButton.astro";
 import { SITE } from "@/config";
 
@@ -80,6 +82,38 @@ const isActive = (path: string) => {
           <a href="/tags" class:list={{ "active-nav": isActive("/tags") }}>
             Tags
           </a>
+        </li>
+        <li class="col-span-2">
+          <LinkButton
+            href="/cves"
+            class:list={[
+              "focus-outline flex justify-center p-3 sm:p-1",
+              {
+                "active-nav [&>svg]:stroke-accent": isActive("/cves"),
+              },
+            ]}
+            title="CVEs"
+            aria-label="cves"
+          >
+            <IconShieldLock class="hidden sm:inline-block" />
+            <span class="sm:sr-only">CVEs</span>
+          </LinkButton>
+        </li>
+        <li class="col-span-2">
+          <LinkButton
+            href="/certifications"
+            class:list={[
+              "focus-outline flex justify-center p-3 sm:p-1",
+              {
+                "active-nav [&>svg]:stroke-accent": isActive("/certifications"),
+              },
+            ]}
+            title="Certifications"
+            aria-label="certifications"
+          >
+            <IconCertificate class="hidden sm:inline-block" />
+            <span class="sm:sr-only">Certifications</span>
+          </LinkButton>
         </li>
         <li class="col-span-2">
           <a href="/about" class:list={{ "active-nav": isActive("/about") }}>
