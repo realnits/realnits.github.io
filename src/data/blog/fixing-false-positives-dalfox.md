@@ -1,6 +1,6 @@
 ---
 author: Nithissh
-pubDatetime: 2026-03-14T10:00:00.000Z
+pubDatetime: 2026-03-14T00:00:00.000Z
 title: "How I Fixed False Positives in Dalfox XSS Scanner (Issue #884)"
 featured: true
 draft: false
