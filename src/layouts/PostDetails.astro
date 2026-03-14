@@ -287,11 +287,12 @@ const nextPost =
 <script is:inline data-astro-rerun>
   /** Render Mermaid diagrams from ```mermaid code blocks */
   (function initMermaid() {
-    const codeBlocks = document.querySelectorAll('pre > code.language-mermaid');
-    if (codeBlocks.length === 0) return;
+    const preBlocks = document.querySelectorAll('pre[data-language="mermaid"]');
+    if (preBlocks.length === 0) return;
 
-    codeBlocks.forEach((code, i) => {
-      const pre = code.parentElement;
+    preBlocks.forEach(function (pre) {
+      const code = pre.querySelector('code');
+      if (!code) return;
       const container = document.createElement('div');
       container.className = 'mermaid';
       container.textContent = code.textContent;

@@ -10,7 +10,6 @@ tags:
 description: "A deep dive into contributing to Dalfox — fixing false positive XSS alerts on JSON API endpoints, the mistakes I made, and the proper fix."
 ---
 
-# How I Fixed False Positives in Dalfox XSS Scanner (Issue #884)
 
 Hello everyone! In this article, I want to share my recent experience contributing to an open-source project called **Dalfox**. If you are into bug bounty or application security, you probably already know that Dalfox is a very fast and popular XSS scanner written in Golang.
 
