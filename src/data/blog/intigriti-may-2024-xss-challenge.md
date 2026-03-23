@@ -5,7 +5,9 @@ title: "Solving Intigriti's May 2024 XSS Challenge — PhpSpreadsheet Formula In
 featured: true
 draft: false
 tags:
-  - Intigriti CTF
+  - bugbounty
+  - xss
+  - ctf
 description: "A detailed walkthrough of how I solved Intigriti's May 2024 XSS challenge by exploiting a 2nd-order formula injection vulnerability in PhpSpreadsheet's calculateFormula() to achieve Cross-Site Scripting"
 ---
 
