@@ -1,6 +1,6 @@
 ---
 author: Nithissh
-pubDatetime: 2026-03-23T13:15:00.000Z
+pubDatetime: 2026-03-23T15:22:00.000Z
 title: "Solving YesWeHack Dojo #49 — How Two Dashes and a Dash-R Broke a Secret Manager"
 featured: true
 draft: false
