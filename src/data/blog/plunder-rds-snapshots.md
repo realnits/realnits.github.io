@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - pwnedlabs
-description: "Exploiting weakness in Amazon RDS and elevating further to get the flag"
+description: "Enumerating publicly exposed Amazon RDS snapshots from just an AWS account ID, restoring one into my own account, and dumping the database to recover the flag"
 ---
 
 ### Scenario

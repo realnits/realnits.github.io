@@ -6,7 +6,7 @@ featured: false
 draft: false
 tags:
   - pwnedlabs
-description: "Exploiting weakness in Amazon RDS and elevating further to get the flag"
+description: "Finding leaked AWS access keys in a GitHub .env file, using them to enumerate the account, and pivoting into Amazon RDS to escalate and capture the flag"
 ---
 
 ### Scenario
