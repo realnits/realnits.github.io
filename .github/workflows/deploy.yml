@@ -38,6 +38,8 @@ jobs:
         run: npm ci
 
       - name: Build Astro site
+        env:
+          PUBLIC_GOOGLE_SITE_VERIFICATION: V7mWX5b7mQcVOtFv3l0hSRzsoMoADpKuM7vmXAao0-I
         run: |
           npx astro check
           npx astro build
